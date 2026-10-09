@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import date
 
 app = Flask(__name__)
-
+EXCEL_FILE = Path(_file_).parent/"billionaires.xlsx"
 
 @app.route("/")
 @app.route("/<d>")
@@ -18,7 +18,7 @@ def show(d=None):
             error="Use a date like 2026-10-06.",
         )
 
-    df = pd.read_excel("billionaires.xlsx", usecols="A:D")
+  df = pd.read _excel(EXCEL_FILE,usecols="A:D")
     df.columns = ["name", "dob", "country", "networth"]
     df["dob"] = pd.to_datetime(df["dob"])
 
