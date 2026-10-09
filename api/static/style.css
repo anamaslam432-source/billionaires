@@ -1,0 +1,181 @@
+:root {
+  --sage: #8B9A6E;
+  --cream: #F7F2EB;
+  --sand: #EAE2D6;
+  --mist: #EEEEEE;
+  --ink: #2B3123;        /* dark olive for text, derived from the sage */
+  --ink-soft: #566045;
+  --sage-deep: #5F6D47;  /* darker sage for hover states and accents on light backgrounds */
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.wrap {
+  width: min(760px, 100% - 2rem);
+  margin-inline: auto;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background: var(--sage);
+  padding: 3.5rem 0 3rem;
+  border-bottom: 6px solid var(--sand);
+}
+
+.hero-sub {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ink);
+  opacity: .8;
+}
+
+h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(2.6rem, 9vw, 4.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: .25rem 0 1.75rem;
+}
+
+h1 .day { color: var(--cream); }
+
+/* ---------- Date form ---------- */
+.date-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem;
+}
+
+.date-form label {
+  flex-basis: 100%;
+  font-size: .9rem;
+  font-weight: 500;
+}
+
+.date-form input[type="date"] {
+  font: inherit;
+  padding: .6rem .8rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: var(--cream);
+  color: var(--ink);
+}
+
+.date-form button {
+  font: inherit;
+  font-weight: 600;
+  padding: .6rem 1.2rem;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--cream);
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+
+.date-form button:hover { background: transparent; color: var(--ink); }
+
+.today-link {
+  color: var(--ink);
+  font-weight: 500;
+  text-underline-offset: 3px;
+}
+
+.date-form input:focus-visible,
+.date-form button:focus-visible,
+.today-link:focus-visible {
+  outline: 3px solid var(--cream);
+  outline-offset: 2px;
+}
+
+/* ---------- Results ---------- */
+main { padding: 2.5rem 0 4rem; }
+
+.count {
+  font-size: .95rem;
+  color: var(--ink-soft);
+  margin-bottom: 1rem;
+}
+
+.cards { list-style: none; display: grid; gap: .9rem; }
+
+.card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.1rem;
+  background: var(--sand);
+  border-left: 6px solid var(--sage);
+  border-radius: 4px 14px 14px 4px;
+  padding: 1.1rem 1.3rem;
+}
+
+.avatar {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  background: var(--sage);
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.info h2 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.3rem;
+  line-height: 1.25;
+  margin-bottom: .2rem;
+}
+
+dl { display: flex; flex-wrap: wrap; gap: .1rem 1.4rem; font-size: .92rem; }
+dl div { display: flex; gap: .4rem; }
+dt { color: var(--ink-soft); }
+dd { font-weight: 500; }
+
+.worth { text-align: right; }
+.worth .amount {
+  display: block;
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--sage-deep);
+  line-height: 1.2;
+}
+.worth .label { font-size: .8rem; color: var(--ink-soft); }
+
+/* ---------- Empty / error ---------- */
+.empty {
+  background: var(--mist);
+  border: 2px dashed var(--sage);
+  border-radius: 14px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+.empty h2 { font-family: "Fraunces", Georgia, serif; font-size: 1.5rem; margin-bottom: .4rem; }
+.empty p { color: var(--ink-soft); max-width: 46ch; margin-inline: auto; }
+
+/* ---------- Small screens ---------- */
+@media (max-width: 560px) {
+  .hero { padding: 2.5rem 0 2rem; }
+  .card { grid-template-columns: auto 1fr; }
+  .worth { grid-column: 1 / -1; text-align: left; padding-top: .6rem; border-top: 1px solid var(--sage); }
+  .worth .amount, .worth .label { display: inline; }
+  .worth .amount { font-size: 1.25rem; margin-right: .4rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
